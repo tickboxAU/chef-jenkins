@@ -15,8 +15,12 @@ PIDFILE=/var/run/jenkins/jenkins.pid
 # user id to be invoked as (otherwise will run as root; not wise!)
 JENKINS_USER=<%= node.jenkins.server.user %>
 
+
+# location of the jenkins binary files
+JENKINS_ROOT=/usr/share/jenkins
+
 # location of the jenkins war file
-JENKINS_WAR=/usr/share/jenkins/jenkins.war
+JENKINS_WAR=$JENKINS_ROOT/jenkins.war
 
 # jenkins home location
 JENKINS_HOME=<%= node.jenkins.server.home %>
