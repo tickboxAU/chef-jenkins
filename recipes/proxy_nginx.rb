@@ -47,7 +47,7 @@ template "#{node[:nginx][:dir]}/sites-available/jenkins.conf" do
   end
 
   if File.exists?("#{node[:nginx][:dir]}/sites-enabled/jenkins.conf")
-    notifies  :restart, 'service[nginx]'
+    notifies  :restart, 'service[nginx]', :immediately
   end
 end
 
