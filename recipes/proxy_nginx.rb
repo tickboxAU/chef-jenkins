@@ -42,6 +42,10 @@ template "#{node[:nginx][:dir]}/sites-available/jenkins.conf" do
     :max_upload_size  => node[:jenkins][:http_proxy][:client_max_body_size]
   )
 
+  if File.exists?("#{node[:nginx][:dir]}/sites-enabled/default.conf")
+    File.delete("#{node[:nginx][:dir]}/sites-enabled/default.conf")
+  end
+
   if File.exists?("#{node[:nginx][:dir]}/sites-enabled/jenkins.conf")
     notifies  :restart, 'service[nginx]'
   end
