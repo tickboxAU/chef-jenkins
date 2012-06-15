@@ -82,6 +82,7 @@ when "ubuntu", "debian"
     components %w[binary/]
     key "http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key"
     action :add
+    notifies :run, "execute[apt-get update]", :immediately
   end
 when "centos", "redhat"
   include_recipe "yum"
